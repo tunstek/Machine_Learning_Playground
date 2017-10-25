@@ -1,4 +1,1 @@
 
-When a new node is added we should connect to a random node on the adjecent layers
-
-Similarly when a new layer is add we should also add a node to that layer

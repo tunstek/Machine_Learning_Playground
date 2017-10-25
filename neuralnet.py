@@ -61,7 +61,7 @@ class Network(Graph):
         layers = self.cluster_dict.copy()
         for nodeA_id in layers[layerA_id]["vertices"]:
             for nodeB_id in layers[layerB_id]["vertices"]:
-                if nodeB_id not in self.get_vertex(nodeA_id).get_connections():
+                if nodeB_id not in self.get_vertex(nodeA_id).get_forward_connections():
                     return False
         return True
 
@@ -105,7 +105,7 @@ class Network(Graph):
             layerB = self.cluster_dict[layerB_id]["vertices"]
             nodeB_id = layerB[random.randint(0,len(layerB)-1)]
 
-            if nodeB_id not in nodeA.get_connections():
+            if nodeB_id not in nodeA.get_forward_connections():
                 print "Adding edge (" + nodeA_id + " -> " + nodeB_id + ")"
                 self.add_edge(nodeA_id, nodeB_id, random.uniform(0, 1))
                 return 1
@@ -184,6 +184,32 @@ class Network(Graph):
 
     def remove_node(self, node_id):
         self.remove_vertex(node_id)
+
+
+
+    def propogate_signal(self, dataArr):
+        # propagate a signal array forwards through the network
+
+        if len(self.cluster_dict[0]["vertices"]) != len(dataArr):
+            print "propogate_signal: dataArr does not match number of input nodes! - Adjusting for this.."
+
+        # give each input the dataArr values
+        index = 0
+        for in_node_id in self.cluster_dict[0]["vertices"]:
+            if index < len(dataArr):
+                self.get_vertex.value = dataArr[index]
+                index++
+            else:
+                self.get_vertex.value = 0.0
+
+        for layer_id in range(0, hiddenLayerCount):
+            for nodeA_id in self.cluster_dict[layer_id]["vertices"]:
+                nodeA = self.get_vertex(nodeA_id)
+                for nodeB in nodeA.get_forward_connections():
+                    for
+
+
+
 
     #def mutate(self):
         #newLayerID = self.add_layer()

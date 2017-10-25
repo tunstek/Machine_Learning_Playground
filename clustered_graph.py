@@ -18,32 +18,41 @@ class Vertex(object):
             color = "black"
         self.id = node
         self.cluster_id = clusterID
-        self.adjacent = {} # Dict of neighbouring node edge weights keyed by the neighbour node id
+        self.forward_neighbours = {} # Dict of neighbouring node edge weights keyed by the neighbour node id
+        self.backward_neighbours = {} # Dict of neighbouring node edge weights keyed by the neighbour node id
         self.color = color
+
+        self.value = 0.0
+        self.temp_values = []
 
 
     def __str__(self):
-        #return str(self.id) + ' adjacent: ' + str([x.id for x in self.adjacent])
-        return str(self.id) + ' adjacent: ' + str(self.adjacent.keys())
+        #return str(self.id) + ' forward_neighbours: ' + str([x.id for x in self.forward_neighbours])
+        return str(self.id) + ' forward_neighbours: ' + str(self.forward_neighbours.keys())
 
 
-    def add_neighbour(self, neighbour_id, weight=0.0):
-        self.adjacent[neighbour_id] = float(weight)
+    def add_forward_neighbour(self, neighbour_id, weight=0.0):
+        self.forward_neighbours[neighbour_id] = float(weight)
+    def add_backward_neighbour(self, neighbour_id, weight=0.0):
+        self.backward_neighbours[neighbour_id] = float(weight)
 
     def remove_neighbour(self, neighbour_id):
-        self.adjacent.pop(neighbour_id)
+        self.forward_neighbours.pop(neighbour_id)
+        self.backward_neighbours.pop(neighbour_id)
 
-    def get_connections(self):
-        return self.adjacent.keys()
+    def get_forward_connections(self):
+        return self.forward_neighbours.keys()
+    def get_backward_connections(self):
+        return self.backward_neighbours.keys()
 
     def get_id(self):
         return self.id
 
     def get_weight(self, neighbor_id):
-        return self.adjacent[neighbor_id]
+        return self.forward_neighbours[neighbor_id]
 
     def change_weight(self, neighbor_id, weight):
-        self.adjacent[neighbor_id] = float(weight)
+        self.forward_neighbours[neighbor_id] = float(weight)
 
 
 
@@ -60,7 +69,7 @@ class Graph(object):
         # Returns a str representation of the graph
         ret = "\nWeights:\n\n"
         for vid, v in self.vert_dict.iteritems():
-            for w in v.get_connections():
+            for w in v.get_forward_connections():
                 w_node = self.vert_dict[w]
                 wid = w_node.get_id()
                 ret = ret + '( %s , %s, %f)'  % ( vid, wid, v.get_weight(w)) + "\n"
@@ -143,7 +152,7 @@ class Graph(object):
         for key in self.cluster_dict:
             for nodeA_id in self.cluster_dict[key]["vertices"]:
                 nodeA = self.vert_dict[nodeA_id]
-                for nodeB_id in nodeA.get_connections():
+                for nodeB_id in nodeA.get_forward_connections():
                     nodeB = self.vert_dict[nodeB_id]
                     weight = nodeA.get_weight(nodeB_id)
                     vis.edge(nodeA.id, nodeB.id)
@@ -214,8 +223,9 @@ class Graph(object):
             exit()
             #self.add_vertex(to)
 
-        self.vert_dict[frm].add_neighbour(to, cost)
-        #self.vert_dict[to].add_neighbour(frm, cost)
+        self.vert_dict[frm].add_forward_neighbour(to, cost)
+        self.vert_dict[to].add_forward_neighbour(frm, cost)
+        #self.vert_dict[to].add_forward_neighbour(frm, cost)
 
 
 

@@ -3,150 +3,50 @@ digraph {
 	graph [nodesep=3 pad=2 rankdir=LR ranksep=4 size="2000,2000" splines=line]
 		edge [color=black]
 		subgraph cluster_0 {
-			graph [label=Inputs rank=min rankdir=LR]
-				0 [color=blue]
+			graph [label=cluster_0 rank=0 rankdir=LR]
+				g [color=purple]
 		}
 		subgraph cluster_0 {
+			graph [label=cluster_0 rank=0 rankdir=LR]
+				h [color=purple]
+		}
+		subgraph cluster_Inputs {
 			graph [label=Inputs rank=min rankdir=LR]
-				1 [color=blue]
+				a [color=blue]
 		}
-		subgraph cluster_0 {
+		subgraph cluster_Inputs {
 			graph [label=Inputs rank=min rankdir=LR]
-				2 [color=blue]
+				c [color=blue]
 		}
-		subgraph cluster_0 {
+		subgraph cluster_Inputs {
 			graph [label=Inputs rank=min rankdir=LR]
-				3 [color=blue]
+				b [color=blue]
 		}
 		subgraph cluster_1 {
 			graph [label=cluster_1 rank=1 rankdir=LR]
-				8 [color="#3ac0c3"]
+				i [color=pink]
 		}
-		subgraph cluster_1 {
-			graph [label=cluster_1 rank=1 rankdir=LR]
-				9 [color="#3ac0c3"]
-		}
-		subgraph cluster_1 {
-			graph [label=cluster_1 rank=1 rankdir=LR]
-				10 [color="#3ac0c3"]
-		}
-		subgraph cluster_1 {
-			graph [label=cluster_1 rank=1 rankdir=LR]
-				11 [color="#3ac0c3"]
-		}
-		subgraph cluster_1 {
-			graph [label=cluster_1 rank=1 rankdir=LR]
-				12 [color="#3ac0c3"]
-		}
-		subgraph cluster_1 {
-			graph [label=cluster_1 rank=1 rankdir=LR]
-				13 [color="#3ac0c3"]
-		}
-		subgraph cluster_1 {
-			graph [label=cluster_1 rank=1 rankdir=LR]
-				14 [color="#3ac0c3"]
-		}
-		subgraph cluster_1 {
-			graph [label=cluster_1 rank=1 rankdir=LR]
-				15 [color="#3ac0c3"]
-		}
-		subgraph cluster_1 {
-			graph [label=cluster_1 rank=1 rankdir=LR]
-				16 [color="#3ac0c3"]
-		}
-		subgraph cluster_1 {
-			graph [label=cluster_1 rank=1 rankdir=LR]
-				17 [color="#3ac0c3"]
-		}
-		subgraph cluster_1 {
-			graph [label=cluster_1 rank=1 rankdir=LR]
-				18 [color="#3ac0c3"]
-		}
-		subgraph cluster_2 {
-			graph [label=cluster_2 rank=2 rankdir=LR]
-				19 [color="#5380c3"]
-		}
-		subgraph cluster_2 {
-			graph [label=cluster_2 rank=2 rankdir=LR]
-				20 [color="#5380c3"]
-		}
-		subgraph cluster_2 {
-			graph [label=cluster_2 rank=2 rankdir=LR]
-				21 [color="#5380c3"]
-		}
-		subgraph cluster_2 {
-			graph [label=cluster_2 rank=2 rankdir=LR]
-				22 [color="#5380c3"]
-		}
-		subgraph cluster_2 {
-			graph [label=cluster_2 rank=2 rankdir=LR]
-				23 [color="#5380c3"]
-		}
-		subgraph cluster_2 {
-			graph [label=cluster_2 rank=2 rankdir=LR]
-				24 [color="#5380c3"]
-		}
-		subgraph cluster_2 {
-			graph [label=cluster_2 rank=2 rankdir=LR]
-				25 [color="#5380c3"]
-		}
-		subgraph cluster_2 {
-			graph [label=cluster_2 rank=2 rankdir=LR]
-				26 [color="#5380c3"]
-		}
-		subgraph cluster_9223372036854775807 {
+		subgraph cluster_Outputs {
 			graph [label=Outputs rank=max rankdir=LR]
-				4 [color=red]
+				e [color=red]
 		}
-		subgraph cluster_9223372036854775807 {
+		subgraph cluster_Outputs {
 			graph [label=Outputs rank=max rankdir=LR]
-				5 [color=red]
+				d [color=red]
 		}
-		subgraph cluster_9223372036854775807 {
+		subgraph cluster_Outputs {
 			graph [label=Outputs rank=max rankdir=LR]
-				6 [color=red]
+				f [color=red]
 		}
-		subgraph cluster_9223372036854775807 {
-			graph [label=Outputs rank=max rankdir=LR]
-				7 [color=red]
-		}
-			0 -> 9
-			0 -> 17
-			1 -> 8
-			1 -> 15
-			1 -> 14
-			1 -> 18
-			2 -> 11
-			2 -> 16
-			3 -> 10
-			3 -> 13
-			3 -> 12
-			8 -> 19
-			8 -> 25
-			9 -> 19
-			9 -> 21
-			10 -> 19
-			10 -> 26
-			11 -> 19
-			12 -> 19
-			13 -> 19
-			14 -> 19
-			14 -> 20
-			15 -> 19
-			15 -> 22
-			15 -> 23
-			16 -> 19
-			17 -> 19
-			18 -> 19
-			18 -> 24
-			19 -> 5
-			19 -> 4
-			19 -> 7
-			20 -> 7
-			21 -> 6
-			22 -> 7
-			23 -> 4
-			24 -> 5
-			25 -> 5
-			26 -> 5
+			g -> i
+			a -> e
+			a -> d
+			a -> f
+			c -> e
+			c -> g
+			c -> f
+			b -> e
+			b -> d
+			b -> f
+			i -> d
 }
