@@ -5,3 +5,6 @@
  - Currently just generating the initial input and output layers and graphing correctly (see img/)
 
  - Working on mutation and crossover
+
+## Setup
+ - run 'python network.py'
