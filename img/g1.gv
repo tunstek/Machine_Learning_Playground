@@ -3,50 +3,35 @@ digraph {
 	graph [nodesep=3 pad=2 rankdir=LR ranksep=4 size="2000,2000" splines=line]
 		edge [color=black]
 		subgraph cluster_0 {
-			graph [label=cluster_0 rank=0 rankdir=LR]
-				g [color=purple]
+			graph [label=Inputs rank=min rankdir=LR]
+				0 [color=blue]
 		}
 		subgraph cluster_0 {
-			graph [label=cluster_0 rank=0 rankdir=LR]
-				h [color=purple]
-		}
-		subgraph cluster_Inputs {
 			graph [label=Inputs rank=min rankdir=LR]
-				a [color=blue]
+				1 [color=blue]
 		}
-		subgraph cluster_Inputs {
+		subgraph cluster_0 {
 			graph [label=Inputs rank=min rankdir=LR]
-				c [color=blue]
-		}
-		subgraph cluster_Inputs {
-			graph [label=Inputs rank=min rankdir=LR]
-				b [color=blue]
+				2 [color=blue]
 		}
 		subgraph cluster_1 {
 			graph [label=cluster_1 rank=1 rankdir=LR]
-				i [color=pink]
+				6 [color="#618201"]
 		}
-		subgraph cluster_Outputs {
+		subgraph cluster_9223372036854775807 {
 			graph [label=Outputs rank=max rankdir=LR]
-				e [color=red]
+				3 [color=red]
 		}
-		subgraph cluster_Outputs {
+		subgraph cluster_9223372036854775807 {
 			graph [label=Outputs rank=max rankdir=LR]
-				d [color=red]
+				4 [color=red]
 		}
-		subgraph cluster_Outputs {
+		subgraph cluster_9223372036854775807 {
 			graph [label=Outputs rank=max rankdir=LR]
-				f [color=red]
+				5 [color=red]
 		}
-			g -> i
-			a -> e
-			a -> d
-			a -> f
-			c -> e
-			c -> g
-			c -> f
-			b -> e
-			b -> d
-			b -> f
-			i -> d
+			1 -> 6
+			2 -> 6
+			6 -> 4
+			6 -> 5
 }
